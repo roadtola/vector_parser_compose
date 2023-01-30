@@ -1,9 +1,11 @@
 package com.roatola.vectorparsercompose
 
+import android.content.Context
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.ImageView
 import android.widget.ImageView.ScaleType
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -18,8 +20,31 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 
+class VectorParser(context: Context,@DrawableRes vectorResource: Int,imageView: ImageView){
+
+    private var vector: VectorChildFinder
+
+    init {
+        vector = VectorChildFinder(context,vectorResource,imageView)
+    }
+
+    fun getAll(): Pair<Map<String, VectorDrawableCompat.VFullPath>,Map<String, VectorDrawableCompat.VGroup>>{
+        val all = vector.all
+        return all.first to all.second
+    }
+
+    fun getPathByName(pathName: String): VectorDrawableCompat.VFullPath{
+        return vector.findPathByName(pathName)
+    }
+
+    fun getGroupByName(groupName:String): VectorDrawableCompat.VGroup{
+        return vector.findGroupByName(groupName)
+    }
+
+}
+
 @Composable
-fun VectorParser(
+fun VectorParserCompose(
     modifier: Modifier,
     vectorResource: Int,
     contentDescription: String,
@@ -52,7 +77,7 @@ fun VectorParser(
 }
 
 @Composable
-fun VectorParserView(
+fun VectorParserComposeView(
     modifier: Modifier,
     vectorResource: Int,
     contentDescription: String,

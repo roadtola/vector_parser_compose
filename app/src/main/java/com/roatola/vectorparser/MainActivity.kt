@@ -32,7 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.roatola.vectorchildfinder.ui.theme.VectorChildFinderTheme
-import com.roatola.vectorparsercompose.VectorParser
+import com.roatola.vectorparsercompose.VectorParserCompose
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
@@ -56,15 +56,16 @@ class MainActivity : ComponentActivity() {
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.End
                     ) {
-                        VectorParser(
+                        VectorParserCompose(
                             modifier = Modifier
                                 .weight(0.5f)
                                 .height(400.dp),
                             vectorResource = R.drawable.ic_front_muscles,
                             contentDescription = "muscle man",
-                            contentScale = ContentScale.FillBounds
+                            contentScale = ContentScale.Fit
                         ) { paths, group ->
                             // on every render new paths and groups are created
+                            // paths and groups that you have named in your vector file
                             group.forEach {
                                 it.value.setAlpha(0.3f)
                             }

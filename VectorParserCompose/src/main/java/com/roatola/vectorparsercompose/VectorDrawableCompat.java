@@ -41,9 +41,7 @@ import java.util.Stack;
 
 public class VectorDrawableCompat extends VectorDrawableCommon {
     static final String LOGTAG = "VectorDrawableCompat";
-
     static final PorterDuff.Mode DEFAULT_TINT_MODE = PorterDuff.Mode.SRC_IN;
-
     private static final String SHAPE_CLIP_PATH = "clip-path";
     private static final String SHAPE_GROUP = "group";
     private static final String SHAPE_PATH = "path";
@@ -107,7 +105,8 @@ public class VectorDrawableCompat extends VectorDrawableCommon {
     }
 
     public ArrayMap<String, Object> getAllTargets(){
-        return mVectorState.mVPathRenderer.mVGTargetsMap;
+//        return mVectorState.mVPathRenderer.mVGTargetsMap;
+        return mVectorState.mVPathRenderer.getmVGTargetsMap();
     }
 
     public Object getTargetByName(String name) {
@@ -957,6 +956,10 @@ public class VectorDrawableCompat extends VectorDrawableCommon {
             mRootGroup = new VGroup();
             mPath = new Path();
             mRenderPath = new Path();
+        }
+
+        public ArrayMap<String, Object> getmVGTargetsMap(){
+            return mVGTargetsMap;
         }
 
         public void setRootAlpha(int alpha) {

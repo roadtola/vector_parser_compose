@@ -15,7 +15,7 @@ import java.util.Map;
  * myImageView.setColorFilter(porterDuffColorFilter);
  */
 
-public class VectorChildFinder {
+class VectorChildFinder {
 
     private VectorDrawableCompat vectorDrawable;
 
