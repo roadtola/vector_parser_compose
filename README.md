@@ -25,7 +25,7 @@ VectorParserCompose helps to find and manipulate inner elements of vector drawab
 
 ```gradle
   dependencies {
-            implementation 'com.github.roadtola:vector_parser_compose:1.0.0'
+            implementation 'com.github.roadtola:vector_parser_compose:1.0.1'
     }
 ```
 
